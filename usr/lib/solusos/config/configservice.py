@@ -38,14 +38,12 @@ class ConfigService(dbus.service.Object):
 
     def _is_pulse_fixed(self):
 	tsched_found = False
-	regain_privileges()
 	with open("/etc/pulse/default.pa", "r") as pulseconfig:
 		for line in pulseconfig.readlines():
 			line = line.replace("\r","").replace("\n","")
 			if "tsched" in line and "module-udev-detect" in line:
 				tsched_found = True
 				break
-	drop_privileges()
 	return tsched_found
 
 
