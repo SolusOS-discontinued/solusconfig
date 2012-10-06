@@ -8,6 +8,12 @@ _dropped_privileges = 0
 ASSUMED_UID = 65534
 ASSUMED_GID = 65534
 
+
+# NOTE: This functionality has been "borrowed" from the Ubiquity installer and modified to suit the
+# needs of solusconfig. It allows sudo usage for testing, but primarily it will drop the effective userid
+# to that of the "nobody" user, enabling no permissions on the system whatsoever.
+# Only, and only, when permissions are required, use regain_privileges() to elevate the euid of your process
+
 def drop_all_privileges():
     # gconf needs both the UID and effective UID set.
     global _dropped_privileges
