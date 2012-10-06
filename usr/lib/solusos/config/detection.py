@@ -28,6 +28,29 @@ def get_glx_info():
 
 	return (vendor,renderer,version)
 
+''' Return the name of the driver in /etc/X11/xorg.conf, or None '''
+def get_configured_driver():
+	if not os.path.exists("/etc/X11/xorg.conf"):
+		return None
+
+	with open("/etc/X11/xorg.conf","r") as x_file:
+
+		inSection = False
+		for line in x_file.readlines():
+
+			line = line.replace("\r","").replace("\n","").strip()
+
+			if not inSection and "Section" in line and "\"Device\"" in line:
+				inSection = True
+			if "EndSection" in line:
+				inSection = False
+			if  "Driver" in line and inSection:
+
+				driver = line.strip().split()[1].replace("\"","")
+				return driver
+
+	return None
+
 def get_os_version():
 	'''Initialize self.os_vendor and self.os_version.
 
