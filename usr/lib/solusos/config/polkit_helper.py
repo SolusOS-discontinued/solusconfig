@@ -1,9 +1,7 @@
 import dbus
 import os
 
-# Reference File. Because there just isn't any decent documentation in existence on
-# accessing policykit from Python. Modify to suit your needs
-# (In fairness you can now access polkit via gi.repository but not everyone can use that.)
+# Used extensively by solusconfig for authentication tasks
 
 class PolkitHelper:
 
