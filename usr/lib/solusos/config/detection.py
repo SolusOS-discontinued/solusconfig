@@ -5,6 +5,28 @@ from glob import glob
 
 sys_dir = "/sys"
 
+''' Return a 3 part tuple with information on the graphics card '''
+def get_glx_info():
+	p = subprocess.Popen(['glxinfo'], stdout=subprocess.PIPE,
+	    stderr=subprocess.PIPE, close_fds=True)
+	output = p.communicate()[0]
+
+	renderer = "UNKNOWN"
+	vendor = "UNKNOWN"
+	version = "UNKNOWN"
+
+	for line in output.split("\n"):
+		if "OpenGL" in line and ":" in line:
+
+			bitWeWant = line.split(":")[1].strip()
+			if "vendor" in line:
+				vendor = bitWeWant
+			elif "renderer" in line:
+				renderer = bitWeWant
+			elif "version string" in line and not "language" in line: # block CG compiler
+				version = bitWeWant
+
+	return (vendor,renderer,version)
 
 def get_os_version():
 	'''Initialize self.os_vendor and self.os_version.
