@@ -32,7 +32,7 @@ class ConfigService(dbus.service.Object):
 	# Weird as it may sound this is a dict of lists.
 	self.action_pids = dict()
 
-	self.connections = dict()
+	# Drop privileges immediately. We don't need root access unless we're doing something
 	drop_privileges()
 
 
