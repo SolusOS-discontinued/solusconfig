@@ -23,9 +23,6 @@ class ConfigService(dbus.service.Object):
 
 	self.polkit = PolkitHelper()
 
-	# Is PulseAudio fixed? "tsched=0"
-	self.pa_fixed = False
-
 	self.pid_map = dict()
 	self.loop = loop
 
