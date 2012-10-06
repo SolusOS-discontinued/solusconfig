@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=com.solusos.config
+Exec=/usr/sbin/solusconfig
+User=root

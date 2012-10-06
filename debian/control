@@ -1,0 +1,14 @@
+Source: solusconfig
+Section: admin
+Priority: optional
+Maintainer: Ikey Doherty <ikey@solusos.com>
+Build-Depends: debhelper (>= 5)
+Standards-Version: 3.7.2
+
+Package: solusconfig
+Architecture: all
+Depends: python (>= 2.4), python (<< 3), python-dbus, python-gobject
+Description: SolusOS Configuration System
+ Secure backend service to configure various elements of a SolusOS Installation
+ using D-BUS and PolicyKit
+

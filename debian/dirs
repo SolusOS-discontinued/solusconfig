@@ -1,0 +1,14 @@
+etc
+etc/dbus-1
+etc/dbus-1/system.d
+usr
+usr/lib
+usr/lib/solusos
+usr/lib/solusos/config
+usr/sbin
+usr/share
+usr/share/dbus-1
+usr/share/dbus-1/system-services
+usr/share/polkit-1
+usr/share/polkit-1/actions
+
