@@ -51,6 +51,24 @@ def get_configured_driver():
 
 	return None
 
+''' Return the current nvidia modaliases '''
+def get_nvidia_modaliases():
+	mods = list()
+	with open ("/usr/lib/solusos/config/modaliases/nvidia.aliases","r") as aliases:
+		for line in aliases:
+			line = line.replace("\r","").replace("\n","").strip()
+			mods.append(HardwareID("modalias", line))
+	return mods
+
+''' Return the current fglrx modaliases '''
+def get_fglrx_modaliases():
+	mods = list()
+	with open ("/usr/lib/solusos/config/modaliases/fglrx.aliases","r") as aliases:
+		for line in aliases:
+			line = line.replace("\r","").replace("\n","").strip()
+			mods.append(HardwareID("modalias", line))
+	return mods
+
 def get_os_version():
 	'''Initialize self.os_vendor and self.os_version.
 
